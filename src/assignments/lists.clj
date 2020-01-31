@@ -24,9 +24,10 @@
    :implemented? true}
   [pred coll]
   (loop [coll coll result []]
-    (if (empty? coll) result)
-    (let [value (first coll)]
-      (recur (rest coll) (if (pred value) (conj result value) result)))))
+    (if (empty? coll)
+      result
+      (let [value (first coll)]
+        (recur (rest coll) (if (pred value) (conj result value) result))))))
 
 (defn reduce'
   "Implement your own multi-arity version of reduce
@@ -36,8 +37,13 @@
    :use          '[loop recur]
    :dont-use     '[reduce]
    :implemented? false}
-  ([f coll])
-  ([f init coll]))
+  ([f coll]
+   (loop [collection (rest coll) result (first coll)]
+     (if (empty? collection)
+       result
+       (recur (rest collection) (f result (first collection))))))
+  ([f init coll]
+   (reduce' f (cons init coll))))
 
 (defn count'
   "Implement your own version of count that counts the
