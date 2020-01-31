@@ -36,7 +36,7 @@
   {:level        :medium
    :use          '[loop recur]
    :dont-use     '[reduce]
-   :implemented? false}
+   :implemented? true}
   ([f coll]
    (loop [collection (rest coll) result (first coll)]
      (if (empty? collection)
@@ -51,8 +51,12 @@
   {:level        :easy
    :use          '[loop recur]
    :dont-use     '[count]
-   :implemented? false}
-  ([coll]))
+   :implemented? true}
+  ([collection]
+   (loop [coll collection result 0]
+     (if (empty? coll)
+       result
+       (recur (rest coll) (inc result))))))
 
 (defn reverse'
   "Implement your own version of reverse that reverses a coll.
