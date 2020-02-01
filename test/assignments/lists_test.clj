@@ -57,3 +57,9 @@
     (is (= 4 (index-of [1 2 3 4 5 6] 5))))
   (testing "element not-present in collection"
     (is (= -1 (index-of [1 2 3 4 5 6] 9)))))
+
+(deftest palindrome?-test
+  (testing "true condition"
+    (is (true? (palindrome? ["n" "a" "m" "a" "n"]))))
+  (testing "false condition"
+    (is (false? (palindrome? ["k" "a" "n" "n" "u"])))))

@@ -263,7 +263,11 @@
    :use          '[empty? loop recur butlast rest]
    :dont-use     '[reverse]
    :implemented? false}
-  [coll])
+  [collection]
+  (loop [coll collection bool true]
+    (if (or (false? bool) (empty? coll))
+      bool
+      (recur (rest (butlast coll)) (= (first coll) (last coll))))))
 
 (defn index-of
   "index-of takes a sequence and an element and finds the index
