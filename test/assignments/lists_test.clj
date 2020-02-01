@@ -51,3 +51,9 @@
     (is (true? (ascending? [1 2 3 4 5 6]))))
   (testing "false condition"
     (is (false? (ascending? [1 2 3 2 1 0])))))
+
+(deftest index-of-test
+  (testing "element present in collection"
+    (is (= 4 (index-of [1 2 3 4 5 6] 5))))
+  (testing "element not-present in collection"
+    (is (= -1 (index-of [1 2 3 4 5 6] 9)))))
