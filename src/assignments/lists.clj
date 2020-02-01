@@ -64,7 +64,7 @@
   {:level        :easy
    :use          '[reduce conj seqable? when]
    :dont-use     '[reverse]
-   :implemented? false}
+   :implemented? true}
   ([coll]
    (if (seqable? coll)
      (reduce #(conj %1 %2) `() coll)
@@ -77,7 +77,11 @@
    :use          '[loop recur and]
    :dont-use     '[every?]
    :implemented? false}
-  ([pred coll]))
+  ([pred collection]
+   (loop [coll collection bool true]
+     (if (empty? coll)
+       bool
+       (recur (rest coll) (and (pred (first coll)) bool))))))
 
 (defn some?'
   "Implement your own version of some that checks if at least one
