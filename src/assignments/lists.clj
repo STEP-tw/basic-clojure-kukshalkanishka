@@ -108,6 +108,7 @@
   (every? (partial apply <=)
           (partition 2 1 coll)))
 
+;Sequence of list is not maintained.
 (defn distinct'
   "Implement your own lazy sequence version of distinct which returns
   a collection with duplicates eliminated. Might have to implement another
@@ -116,7 +117,9 @@
    :use          '[lazy-seq set conj let :optionally letfn]
    :dont-use     '[loop recur distinct]
    :implemented? false}
-  [coll])
+  [coll]
+  (lazy-seq (let [unique-items (set coll)]
+              (vec unique-items))))
 
 (defn dedupe'
   "Implement your own lazy sequence version of dedupe which returns

@@ -73,3 +73,7 @@
     (is (= [1 1 2 2 3 3] (double-up [1 2 3]))))
   (testing "two dimensional collection"
     (is (= [[1 2] [1 2] [3 4] [3 4]] (double-up [[1 2] [3 4]])))))
+
+(deftest distinct-test
+  (testing "non-empty collection"
+    (is (= '(1 4 3 2 5) (distinct' [1 2 1 2 4 5 3 5])))))
