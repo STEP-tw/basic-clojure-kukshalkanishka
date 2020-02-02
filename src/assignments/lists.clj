@@ -255,8 +255,13 @@
   {:level        :easy
    :use          '[interleave split-at if rem concat take-last]
    :dont-use     '[loop recur map-indexed take drop]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll]
+  (let [coll-length (count coll)
+        interleaved (apply interleave (split-at (int (/ coll-length 2)) coll))]
+   (if (zero? (rem coll-length 2))
+     interleaved
+     (concat interleaved (take-last 1 coll)))))
 
 (defn muted-thirds
   "Given a sequence of numbers, make every third element

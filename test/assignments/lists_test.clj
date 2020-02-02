@@ -85,3 +85,9 @@
 (deftest cross-product-test
   (testing "non-empty collection"
     (is (= [[1 4] [1 3] [1 5] [2 4] [2 3] [2 5] [3 4]] (cross-product [1 2 3] [4 3 5])))))
+
+(deftest split-comb-test
+  (testing "odd length collection"
+    (is (= '(1 3 2 4 5) (split-comb [1 2 3 4 5]))))
+  (testing "even length collection"
+    (is (= '(1 4 2 5 3 6) (split-comb [1 2 3 4 5 6])))))
