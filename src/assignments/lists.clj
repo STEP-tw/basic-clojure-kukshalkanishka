@@ -116,7 +116,7 @@
   {:level        :medium
    :use          '[lazy-seq set conj let :optionally letfn]
    :dont-use     '[loop recur distinct]
-   :implemented? false}
+   :implemented? true}
   [coll]
   (lazy-seq (let [unique-items (set coll)]
               (vec unique-items))))
@@ -156,13 +156,13 @@
 (def
   ^{:level        :easy
     :dont-use     '[loop recur for nth get]
-    :implemented? false}
+    :implemented? true}
   transpose
   "Transposes a given matrix.
   [[a b] [c d]] => [[a c] [b d]].
   Note this is a def. Not a defn.
   Return a vector of vectors, not list of vectors or vectors of lists"
-  (partial apply map vector))
+  (partial apply mapv vector))
 
 (defn difference
   "Given two collections, returns only the elements that are present
@@ -209,7 +209,7 @@
   each element repeated twice"
   {:level        :easy
    :use          '[mapcat partial repeat :optionally vector]
-   :implemented? false}
+   :implemented? true}
   [coll]
   (mapcat (partial repeat 2) coll))
 
@@ -228,7 +228,7 @@
   [4 5 6] => [16 16 16]"
   {:level        :easy
    :use          '[map constantly let]
-   :implemented? false}
+   :implemented? true}
   [coll]
   (let [sqr-of-first (constantly (* (first coll) (first coll)))]
     (map sqr-of-first coll)))
