@@ -76,4 +76,8 @@
 
 (deftest distinct-test
   (testing "non-empty collection"
-    (is (= '(1 4 3 2 5) (distinct' [1 2 1 2 4 5 3 5])))))
+    (is (= [1 4 3 2 5] (distinct' [1 2 1 2 4 5 3 5])))))
+
+(deftest transpose-test
+  (testing "non-empty collection"
+    (is (= [[\a \d] [\b \e] [\c \f]] (transpose [[\a \b \c] [\d \e \f]])))))
