@@ -223,7 +223,9 @@
   {:level        :easy
    :use          '[map constantly let]
    :implemented? false}
-  [coll])
+  [coll]
+  (let [sqr-of-first (constantly (* (first coll) (first coll)))]
+    (map sqr-of-first coll)))
 
 (defn russian-dolls
   "Given a collection and a number, wrap each element in a nested vector

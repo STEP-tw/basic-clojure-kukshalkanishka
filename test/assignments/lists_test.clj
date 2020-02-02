@@ -63,3 +63,8 @@
     (is (true? (palindrome? ["n" "a" "m" "a" "n"]))))
   (testing "false condition"
     (is (false? (palindrome? ["k" "a" "n" "n" "u"])))))
+
+(deftest sqr-of-the-first-test
+  (testing "non-empty collection"
+    (is (= [16 16 16] (sqr-of-the-first [4 5 6])))))
+
