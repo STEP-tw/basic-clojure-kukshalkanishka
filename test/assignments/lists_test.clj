@@ -68,3 +68,8 @@
   (testing "non-empty collection"
     (is (= [16 16 16] (sqr-of-the-first [4 5 6])))))
 
+(deftest double-up-test
+  (testing "single dimensional collection"
+    (is (= [1 1 2 2 3 3] (double-up [1 2 3]))))
+  (testing "two dimensional collection"
+    (is (= [[1 2] [1 2] [3 4] [3 4]] (double-up [[1 2] [3 4]])))))
