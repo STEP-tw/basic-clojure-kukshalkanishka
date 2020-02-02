@@ -262,11 +262,11 @@
   {:level        :easy
    :use          '[empty? loop recur butlast rest]
    :dont-use     '[reverse]
-   :implemented? false}
+   :implemented? true}
   [collection]
-  (loop [coll collection bool true]
-    (if (or (false? bool) (empty? coll))
-      bool
+  (loop [coll collection result true]
+    (if (or (false? result) (empty? coll))
+      result
       (recur (rest (butlast coll)) (= (first coll) (last coll))))))
 
 (defn index-of
@@ -281,7 +281,7 @@
   (loop [coll collection index 0 matched-index -1]
     (if (or (not= -1 matched-index) (empty? coll))
       matched-index
-      (recur (rest coll) (inc index) (if (= (first coll) n) index -1)))))
+      (recur (rest coll) (inc index) (if (= (first coll) n) index matched-index)))))
 
 (defn validate-sudoku-grid
   "Given a 9 by 9 sudoku grid, validate it."
