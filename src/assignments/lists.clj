@@ -66,9 +66,8 @@
    :dont-use     '[reverse]
    :implemented? true}
   ([coll]
-   (if (seqable? coll)
-     (reduce #(conj %1 %2) `() coll)
-     nil)))
+   (when (seqable? coll)
+     (reduce conj `() coll))))
 
 (defn every?'
   "Implement your own version of every? that checks if every
@@ -243,7 +242,7 @@
   {:level        :medium
    :use          '[iterate mapv partial vector drop first ->>]
    :dont-use     '[for loop recur reduce]
-   :implemented? false}
+   :implemented? true}
   [coll nesting-factor]
   (->> coll
        (mapv #(first (drop (dec nesting-factor) (iterate vector %))))))
