@@ -92,5 +92,5 @@
     (is (= :durga (conditions-apply [:a :k :b :r :c]))))
   (testing "cleopatra"
     (is (= :cleopatra (conditions-apply [[2 3] [1 3] [4 5] [2 6]]))))
-  (testing "tuntun"
+  (testing "tuntun :default case"
     (is (= :tuntun (conditions-apply [[2 3] [1 3] [4 5] [2 6] [2 3]])))))

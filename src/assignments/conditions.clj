@@ -66,7 +66,7 @@
   {:level        :medium
    :use          '[condp filter]
    :alternates   '[if cond]
-   :implemented? false}
+   :implemented? true}
   [coll]
   (condp #(= %1 (filter (set %1) %2)) coll
     [1 3] :wonder-women

@@ -95,3 +95,7 @@
 (deftest russian-dolls-test
   (testing "non-empty collection"
     (is (= [[[1]] [[2]] [[3]]] (russian-dolls [1 2 3] 3)))))
+
+(deftest sum-of-adjacent-digits-test
+  (testing "non-empty collection"
+    (is (= [3 5 7] (sum-of-adjacent-digits [1 2 3 4])))))
