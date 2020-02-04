@@ -67,7 +67,12 @@
    :use          '[condp filter]
    :alternates   '[if cond]
    :implemented? false}
-  [coll])
+  [coll]
+  (condp #(= %1 (filter (set %1) %2)) coll
+    [1 3] :wonder-women
+    [:a :b :c] :durga
+    [[2 3] [4 5]] :cleopatra
+    :tuntun))
 
 (defn repeat-and-truncate
   "Given coll and options to repeat and truncate

@@ -84,3 +84,13 @@
     (is (= `(4 3 2 0 2 3 4) (zero-separated-palindrome [1 2 3]))))
   (testing "empty collection"
     (is (= `(0) (zero-separated-palindrome [])))))
+
+(deftest conditions-apply-test
+  (testing "wonder-women"
+    (is (= :wonder-women (conditions-apply [0 1 4 3 4 5]))))
+  (testing "durga"
+    (is (= :durga (conditions-apply [:a :k :b :r :c]))))
+  (testing "cleopatra"
+    (is (= :cleopatra (conditions-apply [[2 3] [1 3] [4 5] [2 6]]))))
+  (testing "tuntun"
+    (is (= :tuntun (conditions-apply [[2 3] [1 3] [4 5] [2 6] [2 3]])))))
