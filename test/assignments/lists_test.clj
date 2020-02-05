@@ -111,3 +111,7 @@
 (deftest difference-test
   (testing "non-empty collection"
     (is (= [5 6 7 8] (difference [1 2 3 4] [5 6 1 2 7 8])))))
+
+(deftest muted-thirds-test
+  (testing "non-empty collection"
+    (is (= [1 2 0 4 5 0 7 8 0] (muted-thirds [1 2 3 4 5 6 7 8 9])))))
