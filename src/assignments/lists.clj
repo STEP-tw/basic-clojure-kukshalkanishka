@@ -101,10 +101,10 @@
    :dont-use     '[some]
    :implemented? true}
   ([pred collection]
-    (loop [coll collection bool false]
-      (if (or (true? bool) (empty? coll))
-        bool
-        (recur (rest coll) (pred (first coll)))))))
+   (loop [coll collection bool false]
+     (if (or (true? bool) (empty? coll))
+       bool
+       (recur (rest coll) (pred (first coll)))))))
 
 (defn ascending?
   "Verify if every element is greater than or equal to its predecessor"
@@ -138,7 +138,7 @@
   {:level        :medium
    :use          '[lazy-seq conj let :optionally letfn]
    :dont-use     '[loop recur dedupe]
-   :implemented? false}
+   :implemented? true}
   [coll]
   (lazy-seq (reduce #(if (not= (last %1) %2)
                        (conj %1 %2)
@@ -166,8 +166,10 @@
    :dont-use     '[loop recur partition]
    :implemented? true}
   [coll]
-  (->> (map vector coll (next coll) (nnext coll))
-       (apply max-key (partial apply +))))
+  (apply
+    max-key
+    (partial apply +)
+    (map vector coll (next coll) (nnext coll))))
 
 ;; transpose is a def. Not a defn.
 (def
@@ -216,8 +218,8 @@
   [-1 -1] [0 -1] [1 -1] etc. There should be 8 points
   (Note this is a def, not a defn"
   #(for [x (range -1 2)
-        y (range -1 2) :when (not= x y 0)]
-    [x y]))
+         y (range -1 2) :when (not= x y 0)]
+     [x y]))
 
 (defn cross-product
   "Given two sequences, generate every combination in the sequence
@@ -286,9 +288,9 @@
   [coll]
   (let [coll-length (count coll)
         interleaved (apply interleave (split-at (int (/ coll-length 2)) coll))]
-   (if (zero? (rem coll-length 2))
-     interleaved
-     (concat interleaved (take-last 1 coll)))))
+    (if (zero? (rem coll-length 2))
+      interleaved
+      (concat interleaved (take-last 1 coll)))))
 
 (defn muted-thirds
   "Given a sequence of numbers, make every third element
@@ -327,8 +329,26 @@
       matched-index
       (recur (rest coll) (inc index) (if (= (first coll) n) index matched-index)))))
 
+(def partition-3 (partial partition 3))
+(def cols (partial apply map vector))
+(def valid-sudoku-combination?
+  #(= #{1 2 3 4 5 6 7 8 9} (set %)))
+
+(defn three-by-three
+  [grid]
+  (->> grid
+       (map partition-3)
+       transpose
+       (apply interleave)
+       partition-3
+       (map flatten )))
+
 (defn validate-sudoku-grid
   "Given a 9 by 9 sudoku grid, validate it."
   {:level        :hard
-   :implemented? false}
-  [grid])
+   :implemented? true}
+  [grid]
+  (every? valid-sudoku-combination?
+            (concat grid
+                    (cols grid)
+                    (three-by-three grid))))
