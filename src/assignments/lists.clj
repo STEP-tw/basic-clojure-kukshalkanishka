@@ -181,9 +181,12 @@
   {:level        :easy
    :use          '[remove into set ->>]
    :implemented? false}
-  [coll1 coll2])
+  [coll1 coll2]
+  (->> coll2
+       (remove (set coll1))
+       (into coll1)))
 
-;; points-around-origin is a def not a defn
+; points-around-origin is a def not a defn
 (def
   ^{:level        :easy
     :use          '[for]
@@ -221,7 +224,7 @@
   elements whose index is either divisible by three or five"
   {:level        :easy
    :use          '[keep-indexed when :optionally map-indexed filter]
-   :implemented? false}
+   :implemented? true}
   [coll]
   (keep-indexed #(when (or (zero? (rem %1 3)) (zero? (rem %1 5))) %2) coll))
 

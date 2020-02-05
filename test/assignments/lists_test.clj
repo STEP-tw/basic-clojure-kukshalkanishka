@@ -103,3 +103,7 @@
 (deftest third-or-fifth-test
   (testing "non-empty collection"
     (is (= [1 4 6 7] (third-or-fifth [1 2 3 4 5 6 7 8 9])))))
+
+(deftest union-test
+  (testing "non-empty collection"
+    (is (= [1 2 3 4 5 6 7 8] (union [1 2 3 4] [5 6 1 2 7 8])))))
