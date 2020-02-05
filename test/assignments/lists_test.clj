@@ -115,3 +115,7 @@
 (deftest muted-thirds-test
   (testing "non-empty collection"
     (is (= [1 2 0 4 5 0 7 8 0] (muted-thirds [1 2 3 4 5 6 7 8 9])))))
+
+(deftest points-around-origin-test
+  (testing "non-empty collection"
+    (is (= [[-1 -1] [-1 0] [-1 1] [0 -1] [0 1] [1 -1] [1 0] [1 1]] (points-around-origin)))))
