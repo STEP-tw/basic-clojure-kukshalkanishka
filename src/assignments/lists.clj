@@ -170,8 +170,10 @@
   {:level        :easy
    :use          '[remove set]
    :dont-use     '[loop recur if]
-   :implemented? false}
-  [coll1 coll2])
+   :implemented? true}
+  [coll1 coll2]
+  (->> coll2
+       (remove (set coll1))))
 
 (defn union
   "Given two collections, returns a new collection with elements from the second
@@ -180,7 +182,7 @@
   if elements repeat."
   {:level        :easy
    :use          '[remove into set ->>]
-   :implemented? false}
+   :implemented? true}
   [coll1 coll2]
   (->> coll2
        (remove (set coll1))
