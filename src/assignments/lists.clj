@@ -140,7 +140,11 @@
    :dont-use     '[loop recur dedupe]
    :implemented? false}
   [coll]
-  (lazy-seq))
+  (lazy-seq (reduce #(if (not= (last %1) %2)
+                       (conj %1 %2)
+                       %1)
+                    []
+                    coll)))
 
 (defn sum-of-adjacent-digits
   "Given a collection, returns a map of the sum of adjacent digits.

@@ -127,3 +127,7 @@
     (is (= [2 -1 2] (max-three-digit-sequence [1 2 -1 2 0]))))
   (testing "end term max"
     (is (= [-1 2 3] (max-three-digit-sequence [1 2 -1 2 3])))))
+
+(deftest dedupe'-test
+  (testing "non-empty collection"
+    (is (= [1 2 3 1 3] (dedupe' [1 1 2 3 1 1 3 3])))))
