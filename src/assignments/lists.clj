@@ -183,8 +183,7 @@
    :dont-use     '[loop recur if]
    :implemented? true}
   [coll1 coll2]
-  (->> coll2
-       (remove (set coll1))))
+  (remove (set coll1) coll2))
 
 (defn union
   "Given two collections, returns a new collection with elements from the second
@@ -266,8 +265,7 @@
    :dont-use     '[for loop recur reduce]
    :implemented? true}
   [coll nesting-factor]
-  (->> coll
-       (mapv #(first (drop (dec nesting-factor) (iterate vector %))))))
+  (mapv #(first (drop (dec nesting-factor) (iterate vector %))) coll))
 
 (defn split-comb
   "Given a collection, return a new sequence where the first
