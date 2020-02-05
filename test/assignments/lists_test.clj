@@ -2,9 +2,11 @@
   (:require [clojure.test :refer :all]
             [assignments.lists :refer :all]))
 
-(deftest map
+(deftest map-test
     (testing "identity with single coll"
-      (is (= [1 2 3] (map' identity [1 2 3])))))
+      (is (= [1 2 3] (map' identity [1 2 3]))))
+    (testing "with multiple coll"
+      (is (= [2 4 6] (map' + [1 2 3] [1 2 3])))))
 
 (deftest filter-test
     (testing "even? predicate"
