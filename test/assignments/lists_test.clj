@@ -119,3 +119,9 @@
 (deftest points-around-origin-test
   (testing "non-empty collection"
     (is (= [[-1 -1] [-1 0] [-1 1] [0 -1] [0 1] [1 -1] [1 0] [1 1]] (points-around-origin)))))
+
+(deftest max-three-digit-sequence-test
+  (testing "middle term max"
+    (is (= [2 -1 2] (max-three-digit-sequence [1 2 -1 2 0]))))
+  (testing "end term max"
+    (is (= [-1 2 3] (max-three-digit-sequence [1 2 -1 2 3])))))

@@ -151,8 +151,10 @@
   {:level        :medium
    :use          '[map next nnext max-key partial apply + if ->>]
    :dont-use     '[loop recur partition]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll]
+  (->> (map vector coll (next coll) (nnext coll))
+       (apply max-key (partial apply +))))
 
 ;; transpose is a def. Not a defn.
 (def
@@ -190,12 +192,13 @@
        (remove (set coll1))
        (into coll1)))
 
+
 ; points-around-origin is a def not a defn
 (def
   ^{:level        :easy
     :use          '[for]
     :dont-use     '[hardcoded-values map filter]
-    :implemented? false}
+    :implemented? true}
   points-around-origin
   "Calculate all the points around the origin
   [-1 -1] [0 -1] [1 -1] etc. There should be 8 points
