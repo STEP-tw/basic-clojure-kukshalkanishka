@@ -99,3 +99,7 @@
 (deftest sum-of-adjacent-digits-test
   (testing "non-empty collection"
     (is (= [3 5 7] (sum-of-adjacent-digits [1 2 3 4])))))
+
+(deftest third-or-fifth-test
+  (testing "non-empty collection"
+    (is (= [1 4 6 7] (third-or-fifth [1 2 3 4 5 6 7 8 9])))))
