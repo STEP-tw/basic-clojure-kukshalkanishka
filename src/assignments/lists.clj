@@ -338,10 +338,9 @@
   [grid]
   (->> grid
        (map partition-3)
-       transpose
        (apply interleave)
        partition-3
-       (map flatten )))
+       (map flatten)))
 
 (defn validate-sudoku-grid
   "Given a 9 by 9 sudoku grid, validate it."
